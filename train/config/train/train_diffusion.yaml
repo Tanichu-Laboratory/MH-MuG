@@ -1,0 +1,33 @@
+#-------- detaset path -------
+train_data_path: 
+- ../dataset/data/npy/classical_jazz_1024_background_labeled/train
+validation_data_path:
+- ../dataset/data/npy/classical_jazz_1024_background_labeled/val
+test_data_path:
+- ../dataset/data/npy/classical_jazz_1024_background_labeled/test
+
+#------ setting input data ------
+data_length: 1024
+input_names: ["midi"] #modalities of input data
+input_shapes: #dims
+  midi: [3, 1024, 128]
+
+#------ train params ------
+train_iteration: 3000
+validation_interval: 1
+checkpoint_interval: 200
+batch_size: 64
+learning_rate: 2e-5 #default: 2e-5
+seed: 42
+condition_type: text #condition type of diffusion #text or class
+use_clip_probvlm: True #flag of using text encoder
+
+
+#------- setting using model -------
+#support Diffusion
+z_model: "Diffusion" #name of using model for obtain z
+#support VAE
+encoder: VAE #name of using model for encoder
+
+#------- setting vae train mode -------
+train_discriminator: False #default: False

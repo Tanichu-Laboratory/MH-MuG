@@ -1,0 +1,4 @@
+defaults:
+- main: main
+- train: train_vae
+- vae: vae

@@ -1,0 +1,52 @@
+#------setting diffusion model-------
+
+#------params-------
+beta: #β
+  start: 0.0001
+  end: 0.02
+p_cond: 0.9 #probability of conditional in train default: 0.5
+use_ema: False #flag of using EMA
+num_steps: 1000 #default: 1000
+sampling_size: 100 #num of samplings default: 40
+sampling_shape: [4, 128, 16] #shape of sampling default: [4, 128, 128]
+pretained_model_path: /raid/koki-sakurai/model/train/results/MH_naming_game/2025-02-23/run_1/model_10/A/diffusion_10.pt
+
+#------setting scg sample-------
+scg: False
+num_scg_sample: 16 #num of scg sampling
+t_start: 750 #start time of scg sampling
+t_end: 0 #end time of scg sampling
+target_rules:
+  #pitch hist: dim=12, note density: dim=16, chord: dim=13
+  note_density: [1.7500, 3.3125, 2.6250, 2.8750, 2.0625, 1.8750, 1.9375, 4.2500, 1.2000, 1.2000, 0.6000, 0.8000, 0.6000, 0.8000, 1.4000, 1.2000]
+
+#------LoRa params-------
+use_lora: True #flag of using LoRa
+lora:
+  r: 8 #rank
+  lora_alpha: 16 #alpha
+  target_modules: ['x_embedder.MLP.0', 'x_embedder.MLP.2', 't_embedder.mlp.0', 't_embedder.mlp.2', 'embedding_table', 'adaLN_modulation.1', 'qkv', 'proj', 'fc1', 'fc2', 'linear']
+  lora_dropout: 0.05
+  bias: none
+
+#------setting denoising_network------
+denoising_network: dit #support u_net or dit
+
+#------ setting DiT ------
+dit:
+  input_size: [128, 16] #input size(W,H)
+  in_channels: 4 #input channel
+  num_classes: 3
+  class_dropout_prob: 0.1 #dropout rate in condition
+  learn_sigma: False #learn sigma in DiT If False learn only noise
+
+#------ setting U-Net -------
+u_net:
+  channel_init: 3 
+  channel: 64
+  num_blocks: 2 
+  multiple_layer: [1, 2, 4, 4] 
+  attention_levels: [2, 3] 
+  n_head: 4 # head of attention layer
+  tf_layer: 1 #strength layer 
+  d_cond: 512 #condition dim

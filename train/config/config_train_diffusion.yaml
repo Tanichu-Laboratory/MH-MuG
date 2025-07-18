@@ -1,0 +1,6 @@
+defaults:
+- main: main
+- train: train_diffusion
+- vae: vae
+- diffusion: diffusion
+- clip_probvlm: clip_probvlm

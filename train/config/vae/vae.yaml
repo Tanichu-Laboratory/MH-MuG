@@ -1,0 +1,11 @@
+#------setting VAE-------
+#------params-------
+scale_factor: 1.2465 #scaling latent sampling default: 1.2465
+
+#------pretrained in this code-------
+pretained_model_path: /raid/koki-sakurai/model/train/pretrained/VAE/VAE_classical_1024_25000.pt
+
+#------pretrained other------
+#https://github.com/yjhuangcd/rule-guided-music/tree/master
+model_config_path: /raid/koki-sakurai/model/algos/VAE/configs/pr/kl/f8-all-onset.yaml
+ckpt_path: /raid/koki-sakurai/model/algos/VAE/ckpt/epoch_14.ckpt

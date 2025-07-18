@@ -1,0 +1,22 @@
+#------environment of CLIP and ProbVLM-------
+
+#------setting CLIP encoder-------
+CLIP:
+  pre_trained_model: ViT-B/32 #pre-trained model of CLIP
+  parameter_path: /raid/koki-sakurai/model/train/pretrained/CLIP/CLIP_100_classical_background_labeled.pt
+  
+#------ setting ProbVLM -------
+ProbVLM:
+  inp_dim: 512 #input dimension of ProbVLM
+  out_dim: 512 #output dimension of ProbVLM
+  hid_dim: 512 #hidden dimension of ProbVLM
+  num_layers: 3 #number of layers of ProbVLM
+  p_drop: 0.05 #dropout rate of ProbVLM
+  parameter_path: 
+  use_lora: True #flag of using LoRa
+  lora:
+    r: 8 #rank
+    lora_alpha: 16 #alpha
+    target_modules: ['0', '2', '5']
+    lora_dropout: 0.05
+    bias: none

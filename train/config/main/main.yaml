@@ -1,0 +1,9 @@
+#------ setting experiment ------
+experiment_name: MH_naming_game #save folder name as this name
+tags: MH_namming_game #wandb's tag
+disable_cuda: False
+n_gpu: 4 #num of gpu
+device: cuda:2 #device name
+
+#------- log ------
+wandb : True #flag of using wandb

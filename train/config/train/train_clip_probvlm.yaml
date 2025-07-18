@@ -1,0 +1,37 @@
+#-------- detaset path -------
+train_data_path: 
+- ../dataset/data/npy/jazz_1024_background_labeled/train
+validation_data_path:
+- ../dataset/data/npy/jazz_1024_background_labeled/val
+test_data_path:
+- ../dataset/data/npy/jazz_1024_background_labeled/test
+
+#------image data path-------
+train_image_data_path:
+- ../dataset/data/img/jazz_1024_background_labeled/train
+validation_image_data_path:
+- ../dataset/data/img/jazz_1024_background_labeled/val
+test_image_data_path:
+- ../dataset/data/img/jazz_1024_background_labeled/test
+
+#------ setting input data ------
+data_length: 128 
+input_names: ["midi"] #modalities of input data
+input_shapes: #dims
+  midi: [3, 1024, 128]
+
+#------ train params ------
+train_iteration: 400000
+validation_interval: 1
+checkpoint_interval: 1000
+batch_size: 256
+learning_rate: 1e-4 #default: 1e-4
+seed: 42
+use_clip_probvlm: True
+condition_type: text
+
+#------- setting using model -------
+#support Diffusion
+z_model:
+#support VAE
+encoder:

@@ -1,0 +1,6 @@
+#------ setting mh_naming params ------
+K: 3 #num of category
+beta: 1.0 #β
+
+#------ pretrained path-------
+pretrained_model_path:
