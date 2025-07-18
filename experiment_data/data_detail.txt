@@ -1,0 +1,35 @@
+001 LDM(jazz and classical)
+002 Agent A non finetuning
+003 LDM(jazz)
+004 Agent B epoch 10
+005 LDM(jazz and classical)
+006 Agent B non finetuning
+007 LDM(classical)
+008 Agent A epoch 10
+009 LDM(jazz and classical)
+010 Agent B epoch 10
+011 Agent A non finetuning
+012 LDM(classical)
+013 Agent B non finetuning
+014 Agent A epoch 10
+015 LDM(jazz)
+016 Agent B epoch 10
+017 Agent A non finetuning
+018 LDM(jazz)
+019 Agent B non finetuning
+020 LDM(classical)
+021 Agent A epoch 10
+022 Agent B non finetuning
+023 LDM(jazz and classical)
+024 Agent A non finetuning
+025 LDM(classical)
+026 LDM(jazz and classical)
+027 Agent B non finetuning
+028 LDM(classical)
+029 Agent A non finetuning
+030 Agent B epoch 10
+031 Agent A epoch 10
+032 Agent B epoch 10
+033 LDM(jazz)
+034 Agent A epoch 10
+035 LDM(jazz)
