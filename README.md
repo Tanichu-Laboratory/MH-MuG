@@ -38,129 +38,6 @@ The system consists of:
    |     |
   o^A   o^B  (text observations)
 ```
-
-## 🚀 Installation
-
-### Requirements
-
-- Python 3.8+
-- PyTorch 2.0+
-- CUDA 11.8+ (for GPU support)
-- NVIDIA GPU with at least 24GB VRAM (for training)
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/Tanichu-Laboratory/MH-MuG.git
-cd MH-MuG
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-### Dependencies
-
-```
-torch>=2.0.0
-torchvision>=0.15.0
-transformers>=4.30.0
-diffusers>=0.21.0
-pretty_midi
-mido
-numpy
-scipy
-librosa
-```
-
-## 📊 Dataset
-
-We use piano-solo pieces from [MuseScore](https://musescore.com/) in two genres:
-
-- **Classical**: 100 public-domain pieces (1018 train / 182 val / 64 test segments)
-- **Jazz**: 100 public-domain pieces (1002 train / 151 val / 73 test segments)
-
-Each piece is segmented into 16-second (8-measure) units with textual descriptions generated using MU-LLaMA.
-
-### Data Preprocessing
-
-```bash
-# Download and preprocess the dataset
-python scripts/prepare_data.py --genre classical --output_dir data/classical
-python scripts/prepare_data.py --genre jazz --output_dir data/jazz
-```
-
-## 🎓 Training
-
-### Pre-training Individual Agents
-
-```bash
-# Train VAE
-python train_vae.py --config configs/vae_config.yaml
-
-# Train LDM for Classical agent
-python train_ldm.py --config configs/ldm_classical.yaml --data_dir data/classical
-
-# Train LDM for Jazz agent
-python train_ldm.py --config configs/ldm_jazz.yaml --data_dir data/jazz
-
-# Train ProbVLM
-python train_probvlm.py --config configs/probvlm_config.yaml
-```
-
-### Key Training Parameters
-
-- **VAE**: 50,000 iterations, batch size 8, lr 4.5×10⁻⁶
-- **DiT (LDM)**: 3,000 iterations, batch size 64, lr 4.5×10⁻⁶
-- **ProbVLM**: 400,000 iterations, batch size 256, lr 1×10⁻⁴
-
-### MH-MuG Collaborative Generation
-
-```bash
-# Run MH-MuG without fine-tuning
-python run_mhmug.py \
-  --agent_a_checkpoint checkpoints/ldm_classical.pt \
-  --agent_b_checkpoint checkpoints/ldm_jazz.pt \
-  --probvlm_checkpoint checkpoints/probvlm.pt \
-  --mode without_finetuning \
-  --num_rounds 50 \
-  --output_dir outputs/mhmug_wo_ft
-
-# Run MH-MuG with fine-tuning
-python run_mhmug.py \
-  --agent_a_checkpoint checkpoints/ldm_classical.pt \
-  --agent_b_checkpoint checkpoints/ldm_jazz.pt \
-  --probvlm_checkpoint checkpoints/probvlm.pt \
-  --mode with_finetuning \
-  --num_rounds 50 \
-  --lora_rank 8 \
-  --lora_alpha 16 \
-  --output_dir outputs/mhmug_w_ft
-```
-
-## 🎹 Generation
-
-### Generate Music Samples
-
-```bash
-# Generate with MH-MuG (w/o fine-tuning)
-python generate.py \
-  --checkpoint outputs/mhmug_wo_ft/final_model.pt \
-  --text_prompt "The melody is calm mood and a slow tone." \
-  --num_samples 10 \
-  --output_dir generated_samples
-```
-
-### Inference Parameters
-
-- **Denoising steps**: 1,000 (DDPM sampling)
-- **Classifier-Free Guidance**: Not used
-- **Conditioning probability**: 0.9
-
 ## 📈 Evaluation
 
 ### Quantitative Metrics
@@ -249,42 +126,6 @@ The log-likelihood L* is computed using ProbVLM's Generalized Normal distributio
 L* = (μ_w* - z_c / α_w*)^β_w* - log(β_w* / α_w*) + log Γ(1 / β_w*)
 ```
 
-## 📚 Citation
-
-If you use this code or find our work helpful, please cite:
-
-```bibtex
-@article{sakurai2024mhmug,
-  title={MH-MuG: Collaborative Music Generation Game between AI Agents towards Emergent Musical Creativity},
-  author={Sakurai, Koki and Uenoyama, Haruto and Taniguchi, Akira and Taniguchi, Tadahiro},
-  journal={IEEE Access},
-  year={2024},
-  publisher={IEEE}
-}
-```
-
-## 🤝 Contributing
-
-We welcome contributions! Please feel free to submit issues and pull requests.
-
-### Development Setup
-
-```bash
-# Install development dependencies
-pip install -r requirements-dev.txt
-
-# Run tests
-pytest tests/
-
-# Code formatting
-black .
-isort .
-```
-
-## 📄 License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
 ## 🙏 Acknowledgments
 
 - This work was supported by JSPS KAKENHI Grant Numbers JP23H04835 and JP21H04904
@@ -301,12 +142,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 - **Tadahiro Taniguchi** - Kyoto University (IEEE Member)
 
 **Corresponding author**: Tadahiro Taniguchi (taniguchi@i.kyoto-u.ac.jp)
-
-## 🔗 Links
-
-- [Paper (IEEE Access)](https://ieeexplore.ieee.org/)
-- [Project Page](https://tanichu-laboratory.github.io/MH-MuG/)
-- [Audio Examples](https://github.com/Tanichu-Laboratory/MH-MuG/tree/main/audio_examples)
 
 ## ⚠️ Known Limitations
 
@@ -325,5 +160,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-**Last Updated**: November 2024  
-**Status**: Research Code - Active Development
+**Last Updated**: 10 November 2024  
+
