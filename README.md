@@ -5,21 +5,21 @@
 
 This repository contains the official implementation of **"MH-MuG: Collaborative Music Generation Game between AI Agents towards Emergent Musical Creativity"** published in IEEE Access.
 
-## 📖 Overview
+## Overview
 
 MH-MuG (Metropolis-Hastings Music Generation Game) is a novel multi-agent framework for collaborative symbolic music generation that models the creative process through interactions between AI agents with different musical knowledge. The framework is grounded in the **Systems Model of Creativity** and formulated as a **decentralized Bayesian inference process**.
 
 ### Key Features
 
-- 🎵 **Multi-Agent Collaborative Generation**: Two AI agents (trained on Classical and Jazz) collaborate to create novel music
-- 🔄 **MCMC-Based Interaction**: Uses Metropolis-Hastings algorithm for accept/reject decisions
-- 🎼 **Symbolic Music Generation**: Employs Latent Diffusion Models (LDMs) for high-quality music generation
-- 🧠 **Emergent Communication**: Models music creation as a generative emergent communication process
-- 🎯 **Two Operational Modes**:
+- **Multi-Agent Collaborative Generation**: Two AI agents (trained on Classical and Jazz) collaborate to create novel music
+- **MCMC-Based Interaction**: Uses Metropolis-Hastings algorithm for accept/reject decisions
+- **Symbolic Music Generation**: Employs Latent Diffusion Models (LDMs) for high-quality music generation
+- **Emergent Communication**: Models music creation as a generative emergent communication process
+- **Two Operational Modes**:
   - **w/o fine-tuning**: Fixed-knowledge collaborative game
   - **w/ fine-tuning**: Mutual adaptation through LoRA
 
-## 🏗️ Architecture
+## Architecture
 
 The system consists of:
 
@@ -38,17 +38,100 @@ The system consists of:
    |     |
   o^A   o^B  (text observations)
 ```
-## 📈 Evaluation
+
+## Installation
+
+### Requirements
+
+- Python 3.8+
+- PyTorch 2.0+
+- CUDA 11.8+ (for GPU support)
+- NVIDIA GPU with at least 24GB VRAM (for training)
+
+### Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/Tanichu-Laboratory/MH-MuG.git
+cd MH-MuG
+
+# Create virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+# Install dependencies
+pip install -r requirements.txt
+```
+
+### Dependencies
+
+```
+torch>=2.0.0
+torchvision>=0.15.0
+transformers>=4.30.0
+diffusers>=0.21.0
+pretty_midi
+mido
+numpy
+scipy
+librosa
+```
+
+## Dataset
+
+We use piano-solo pieces from [MuseScore](https://musescore.com/) in two genres:
+
+All datasets are stored in `dataset/midi`.
+
+### Data Preprocessing
+
+You can preprocess the dataset by running `dataset/midi/midi2npy.ipynb`.
+
+## Training
+
+### Pre-training Individual Agents
+
+```bash
+# Move to folder
+cd ./train
+
+# Train VAE
+python train_vae.py
+
+# Train LDM
+python train_diffusion.py
+
+# Train CLIP and ProbVLM
+python train_clip_probvlm.py 
+```
+The YAML files for pre-training each model are located in `./train/config/train/`. Please modify the parameters in each path within the dataset path to match your dataset.
+
+### MH-MuG Collaborative Generation
+
+```bash
+# Move to folder
+cd ./train
+
+# Train MH-MuG
+python train_MH.py
+```
+You can adjust MH-MuG parameters in `./train/config/train/train_MH.yaml`.
+
+## Generation
+
+Set the model path of the LDM trained in MH-MuG to `pretrained_model_path` in `./train/config/diffusion/diffusion.yaml`, then execute the following command:
+```bash
+cd ./train
+python sampling_diffusion.py
+```
+
+After execution, run `dataset/midi/convert2midi.ipynb` on the inference results.
+
+## Evaluation
 
 ### Quantitative Metrics
 
-```bash
-# Evaluate generated music
-python evaluate.py \
-  --generated_dir generated_samples \
-  --reference_dir data/test \
-  --metrics pche gps diversity
-```
+You can evaluate using the metrics in `./dataset/evaluate_audio_metric.ipynb` and `./dataset/evaluate_midi_metric.ipynb`.
 
 **Metrics**:
 - **PCHE** (Pitch Class Histogram Entropy): Measures tonal stability
@@ -66,7 +149,7 @@ python evaluate.py \
 | MH-MuG (w/ f.t.) Agent A | 2.960 | 0.502 | 3.988 |
 | MH-MuG (w/ f.t.) Agent B | 2.845 | 0.506 | 4.983 |
 
-## 🎧 Audio Examples
+## Audio Examples
 
 Generated music samples are available in the `audio_examples/` directory:
 
@@ -75,36 +158,7 @@ Generated music samples are available in the `audio_examples/` directory:
 - `audio_examples/mhmug_wo_ft/` - MH-MuG without fine-tuning
 - `audio_examples/mhmug_w_ft/` - MH-MuG with fine-tuning
 
-## 📁 Project Structure
-
-```
-MH-MuG/
-├── configs/              # Configuration files
-│   ├── vae_config.yaml
-│   ├── ldm_classical.yaml
-│   ├── ldm_jazz.yaml
-│   └── probvlm_config.yaml
-├── data/                 # Dataset directory
-│   ├── classical/
-│   └── jazz/
-├── models/               # Model implementations
-│   ├── vae.py
-│   ├── dit.py            # Diffusion Transformer
-│   ├── ldm.py            # Latent Diffusion Model
-│   └── probvlm.py        # Probabilistic VLM
-├── scripts/              # Utility scripts
-│   ├── prepare_data.py
-│   └── evaluate.py
-├── train_vae.py          # VAE training script
-├── train_ldm.py          # LDM training script
-├── train_probvlm.py      # ProbVLM training script
-├── run_mhmug.py          # Main MH-MuG execution
-├── generate.py           # Generation script
-├── evaluate.py           # Evaluation script
-└── README.md
-```
-
-## 🔬 Algorithm Details
+## Algorithm Details
 
 ### MH-MuG Process
 
@@ -126,7 +180,15 @@ The log-likelihood L* is computed using ProbVLM's Generalized Normal distributio
 L* = (μ_w* - z_c / α_w*)^β_w* - log(β_w* / α_w*) + log Γ(1 / β_w*)
 ```
 
-## 🙏 Acknowledgments
+## Contributing
+
+We welcome contributions! Please feel free to submit issues and pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
 
 - This work was supported by JSPS KAKENHI Grant Numbers JP23H04835 and JP21H04904
 - Figure 1 was generated using an AI image generation tool
@@ -134,7 +196,7 @@ L* = (μ_w* - z_c / α_w*)^β_w* - log(β_w* / α_w*) + log Γ(1 / β_w*)
 - Data sourced from [MuseScore](https://musescore.com/)
 - Text generation using [MU-LLaMA](https://github.com/mumax/mu-llama)
 
-## 👥 Authors
+## Authors
 
 - **Koki Sakurai** - Ritsumeikan University
 - **Haruto Uenoyama** - Kyoto University
@@ -143,14 +205,20 @@ L* = (μ_w* - z_c / α_w*)^β_w* - log(β_w* / α_w*) + log Γ(1 / β_w*)
 
 **Corresponding author**: Tadahiro Taniguchi (taniguchi@i.kyoto-u.ac.jp)
 
-## ⚠️ Known Limitations
+## Links
+
+- [Paper (IEEE Access)](https://ieeexplore.ieee.org/)
+- [Project Page](https://tanichu-laboratory.github.io/MH-MuG/)
+- [Audio Examples](https://github.com/Tanichu-Laboratory/MH-MuG/tree/main/audio_examples)
+
+## Known Limitations
 
 1. **Dataset Size**: Limited to 100 pieces per genre (proof-of-concept)
 2. **Textual Prompts**: "Classical" label is ambiguous, leading to less distinctive evaluation
 3. **Closed-Loop Interaction**: Fine-tuning variant shows "siloing" effect with reduced diversity
 4. **Embodiment**: Agents lack interoceptive grounding in emotion
 
-## 🔮 Future Work
+## Future Work
 
 - Incorporate interoceptive and affective grounding
 - Extend to System 0/1/2/3 multi-timescale agent framework
@@ -160,5 +228,5 @@ L* = (μ_w* - z_c / α_w*)^β_w* - log(β_w* / α_w*) + log Γ(1 / β_w*)
 
 ---
 
-**Last Updated**: 10 November 2024  
-
+**Last Updated**: November 2024  
+**Status**: Research Code - Active Development
