@@ -3,7 +3,7 @@
 [![Paper](https://img.shields.io/badge/Paper-IEEE%20Access-blue)](https://ieeexplore.ieee.org/)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 
-This repository contains the official implementation of **"MH-MuG: Collaborative Music Generation Game between AI Agents towards Emergent Musical Creativity"** published in IEEE Access.
+This repository contains the official implementation of **"MH-MuG: Collaborative Music Generation Game between AI Agents towards Emergent Musical Creativity"** which is now under review.
 
 ## Overview
 
@@ -207,7 +207,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## Links
 
-- [Paper (IEEE Access)](https://ieeexplore.ieee.org/)
 - [Project Page](https://tanichu-laboratory.github.io/MH-MuG/)
 - [Audio Examples](https://github.com/Tanichu-Laboratory/MH-MuG/tree/main/audio_examples)
 
