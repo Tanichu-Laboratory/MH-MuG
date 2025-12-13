@@ -144,10 +144,12 @@ You can evaluate using the metrics in `./dataset/evaluate_audio_metric.ipynb` an
 |-------|------|-----|------------|
 | Original Dataset | 2.929 | 0.610 | 5.587 |
 | LDM (Classical + Jazz) | 2.889 | 0.614 | 5.743 |
-| **MH-MuG (w/o f.t.) Agent A** | **2.995** | **0.589** | **4.700** |
-| **MH-MuG (w/o f.t.) Agent B** | **2.988** | **0.593** | **4.917** |
+| MH-MuG (w/o f.t.) Agent A | 2.995 | 0.589 | 4.700 |
+| MH-MuG (w/o f.t.) Agent B | 2.988 | 0.593 | 4.917 |
 | MH-MuG (w/ f.t.) Agent A | 2.960 | 0.502 | 3.988 |
 | MH-MuG (w/ f.t.) Agent B | 2.845 | 0.506 | 4.983 |
+| MH-MuG (all acceptance) Agent A | 1.760 | 0.837 | 7.645 |
+| MH-MuG (all acceptance) Agent B | 2.953 | 0.606 | 6.162 |
 
 ## Audio Examples
 
