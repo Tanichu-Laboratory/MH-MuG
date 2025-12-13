@@ -6,6 +6,9 @@
 This repository contains the official implementation of **"MH-MuG: Collaborative Music Generation Game between AI Agents towards Emergent Musical Creativity"** which is now under review.
 
 ## Overview
+<audio>
+    <source src="[https://raw.githubusercontent.com/ytyaru/Audio.Sample.201708031714/master/20170803/ogg/CMajor.ogg](https://github.com/Tanichu-Laboratory/MH-MuG/blob/main/experiment_data/Agent_A_all_acceptance_10/0001.wav)">
+</audio>
 
 MH-MuG (Metropolis-Hastings Music Generation Game) is a novel multi-agent framework for collaborative symbolic music generation that models the creative process through interactions between AI agents with different musical knowledge. The framework is grounded in the **Systems Model of Creativity** and formulated as a **decentralized Bayesian inference process**.
 
