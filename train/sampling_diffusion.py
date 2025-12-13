@@ -30,15 +30,14 @@ def run(cfg):
     __, results_dir, device, __ = setup_experiment(cfg)
 
     # ---------- load text ----------
-    path = "/raid/koki-sakurai/model/train/pretrained/sample/sample_text.txt"
+    cond_txt_path = ""
     cond = []
-    """
-    with open(path, "r") as f:
-        for line in f:
-            cond.append(line.strip())
-    """
-    for i in range(100):
-        cond.append("Emerging in the late 1920s, this energetic piano style blends African American blues with jazz rhythms. Originating in the Southern United States, it gained popularity in urban centers like Chicago and New York. Characterized by its driving bass patterns, it influenced swing and rock 'n' roll music.")
+    if cond_txt_path: 
+        with open(cond_txt_path, "r") as f:
+            for line in f:
+                cond.append(line.strip())
+    else:
+        cond = None
     
     # ---------- set model----------
     model = Model_Base(cfg, device)

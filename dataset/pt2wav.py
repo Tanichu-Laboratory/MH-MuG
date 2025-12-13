@@ -111,8 +111,8 @@ def convert_all_npydata(npy_dir, audio_dir):
         npy2audio(npy_path, audio_path)
 
 def run():
-    pt_path = "/raid/koki-sakurai/model/train/pretrained/sample/finetuning-1600-100/sample_10_B.pt"
-    audio_dir = f"data/audio/samples/finetuning-1600-100/sample_10_B"
+    pt_path = ""
+    audio_dir = ""
     os.makedirs(audio_dir, exist_ok=True)
     data = torch.load(pt_path, map_location="cpu")
     data = data["midi"].detach().numpy()

@@ -3,7 +3,7 @@
 #------setting CLIP encoder-------
 CLIP:
   pre_trained_model: ViT-B/32 #pre-trained model of CLIP
-  parameter_path: /raid/koki-sakurai/model/train/pretrained/CLIP/CLIP_100_classical_background_labeled.pt
+  parameter_path: 
   
 #------ setting ProbVLM -------
 ProbVLM:

@@ -154,8 +154,15 @@ class MH_naming():
         #------- cal acceptance rate -------
         like_A = like_AA+like_AB
         like_B = like_BA+like_BB
-        acc_A = min(1, np.exp(like_BA-like_AA))
-        acc_B = min(1, np.exp(like_AB-like_BB))
+        if self.mode == 0: #No communication
+            acc_A = 0
+            acc_B = 0
+        elif self.mode == 1: #all accept
+            acc_A = 1
+            acc_B = 1
+        else:
+            acc_A = min(1, np.exp(like_BA-like_AA))
+            acc_B = min(1, np.exp(like_AB-like_BB))
 
         return acc_A, acc_B, like_A, like_B
     
@@ -335,4 +342,3 @@ class MH_naming():
             print("finetuning B")
             self.finetuning(data_B, 1)
         self.save_MH_log()
-        

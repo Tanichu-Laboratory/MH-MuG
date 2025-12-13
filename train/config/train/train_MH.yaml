@@ -1,6 +1,6 @@
 #-------- detaset dir -------
-dataset_dir_A: /raid/koki-sakurai/model/dataset/data/npy/classical_1024_background_labeled
-dataset_dir_B: /raid/koki-sakurai/model/dataset/data/npy/jazz_1024_background_labeled
+dataset_dir_A: 
+dataset_dir_B: 
 
 #------ setting input data ------
 data_length: 1024
@@ -20,22 +20,22 @@ condition_type: text #condition type #text or class
 use_clip_probvlm: True #flag of using text encoder
 
 #------setting agent-------
-mode:
+mode: 1 #0: No communication, 1: all accept, other: MH
 sampling_size: 100 #num of samples
 finetuning_diffusion_itr: 1600 #finetuning iteration
 finetuning_probvlm_itr: 100 #finetuning iteration
 mh_model_path:
 #A classical, B jazz
 A:
-  diffusion_path: /raid/koki-sakurai/model/train/pretrained/diffusion/diffusion_classical_background_labeled_1600.pt
-  vae_path: /raid/koki-sakurai/model/train/pretrained/VAE/VAE_classical_1024_25000.pt
-  clip_path: /raid/koki-sakurai/model/train/pretrained/CLIP/CLIP_100_classical_background_labeled.pt
-  probvlm_path: /raid/koki-sakurai/model/train/pretrained/ProbVLM/ProbVLM_classical_background_labeled_400000.pt
+  diffusion_path: 
+  vae_path: 
+  clip_path: 
+  probvlm_path: 
 B:
-  diffusion_path: /raid/koki-sakurai/model/train/pretrained/diffusion/diffusion_jazz_background_labeled_1600.pt
-  vae_path: /raid/koki-sakurai/model/train/pretrained/VAE/VAE_jazz_1024_15800.pt
-  clip_path: /raid/koki-sakurai/model/train/pretrained/CLIP/CLIP_100_jazz_background_labeled.pt
-  probvlm_path: /raid/koki-sakurai/model/train/pretrained/ProbVLM/ProbVLM_jazz_background_labeled_400000.pt
+  diffusion_path: 
+  vae_path: 
+  clip_path: 
+  probvlm_path: 
 
 #------- setting using model -------
 #support Diffusion

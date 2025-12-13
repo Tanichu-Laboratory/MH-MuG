@@ -9,7 +9,7 @@ use_ema: False #flag of using EMA
 num_steps: 1000 #default: 1000
 sampling_size: 100 #num of samplings default: 40
 sampling_shape: [4, 128, 16] #shape of sampling default: [4, 128, 128]
-pretained_model_path: /raid/koki-sakurai/model/train/results/MH_naming_game/2025-02-23/run_1/model_10/A/diffusion_10.pt
+pretained_model_path: 
 
 #------setting scg sample-------
 scg: False
