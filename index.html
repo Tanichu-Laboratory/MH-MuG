@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>MH-MuG audio samples</title>
+<style>
+        /* スタイルは先ほどと同じく、テーブルと音声プレイヤーを見やすくするためのものです */
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { border-collapse: collapse; width: 100%; table-layout: fixed; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        /* 複合ヘッダーのためのスタイル */
+        th { background-color: #f2f2f2; font-weight: bold; }
+        .sub-header { background-color: #e9e9e9; font-weight: normal; } /* 下段ヘッダーの色を変える */
+        audio { width: 90%; max-width: 250px; display: block; margin: 0 auto; }
+    </style>
+</head>
+<body>
+
+    <h1>MH-MuG Audio Samples</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2">Original </th>
+
+                <th colspan="3">LDM</th>
+                
+                <th colspan="2">MH-MuG (w/o f.t.)</th>
+                
+                <th colspan="2">MH-MuG (w/ f.t.)</th>
+                
+                <th colspan="2">MH-MuG (all acceptance)</th>
+            </tr>
+            <tr>
+                <th class="sub-header">Classical</th>
+                <th class="sub-header">Jazz</th>
+
+                <th class="sub-header">Classical + Jazz</th>
+                <th class="sub-header">Classical</th>
+                <th class="sub-header">Jazz</th>
+                
+                <th class="sub-header">Agent A</th>
+                <th class="sub-header">Agent B</th>
+                
+                <th class="sub-header">Agent A</th>
+                <th class="sub-header">Agent B</th>
+                
+                <th class="sub-header">Agent A</th>
+                <th class="sub-header">Agent B</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><audio controls><source src="experiment_data/original_classical/001.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/original_jazz/001.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/LDM jazz and classical/001.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_classical/007.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_jazz/003.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_non_finetuning/002.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_non_finetuning/006.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_epoch10/008.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_epoch10/004.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_all_acceptance_10/0001.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_all_acceptance_10/0000.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+                <td><audio controls><source src="experiment_data/original_classical/002.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/original_jazz/002.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/LDM jazz and classical/005.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_classical/012.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_jazz/015.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_non_finetuning/011.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_non_finetuning/013.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_epoch10/014.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_epoch10/010.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/Agent_A_all_acceptance_10/0002.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_all_acceptance_10/0001.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+                <td><audio controls><source src="experiment_data/original_classical/003.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/original_jazz/003.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/LDM jazz and classical/009.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_classical/020.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_jazz/018.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_non_finetuning/017.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_non_finetuning/019.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_epoch10/021.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_epoch10/016.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/Agent_A_all_acceptance_10/0021.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_all_acceptance_10/0002.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+                <td><audio controls><source src="experiment_data/original_classical/004.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/original_jazz/004.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/LDM jazz and classical/023.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_classical/025.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_jazz/033.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_non_finetuning/024.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_non_finetuning/022.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/Agent_A_epoch10/031.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_epoch10/030.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_all_acceptance_10/0057.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_all_acceptance_10/0003.wav" type="audio/wav"></audio></td>
+            </tr>
+            <tr>
+                <td><audio controls><source src="experiment_data/original_classical/005.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/original_jazz/005.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/LDM jazz and classical/026.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_classical/028.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/LDM_jazz/035.wav" type="audio/wav"></audio></td>
+                
+                <td><audio controls><source src="experiment_data/Agent_A_non_finetuning/029.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_non_finetuning/027.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/Agent_A_epoch10/034.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_epoch10/032.wav" type="audio/wav"></audio></td>
+
+                <td><audio controls><source src="experiment_data/Agent_A_all_acceptance_10/0076.wav" type="audio/wav"></audio></td>
+                <td><audio controls><source src="experiment_data/Agent_B_all_acceptance_10/0004.wav" type="audio/wav"></audio></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
