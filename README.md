@@ -152,12 +152,7 @@ You can evaluate using the metrics in `./dataset/evaluate_audio_metric.ipynb` an
 
 ## Audio Examples
 
-Generated music samples are available in the `audio_examples/` directory:
-
-- `audio_examples/classical/` - Baseline Classical LDM outputs
-- `audio_examples/jazz/` - Baseline Jazz LDM outputs
-- `audio_examples/mhmug_wo_ft/` - MH-MuG without fine-tuning
-- `audio_examples/mhmug_w_ft/` - MH-MuG with fine-tuning
+You can listen to sample audio clips in https://tanichu-laboratory.github.io/MH-MuG/.
 
 ## Algorithm Details
 
