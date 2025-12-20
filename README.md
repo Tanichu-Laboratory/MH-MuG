@@ -201,11 +201,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Corresponding author**: Tadahiro Taniguchi (taniguchi@i.kyoto-u.ac.jp)
 
-## Links
-
-- [Project Page](https://tanichu-laboratory.github.io/MH-MuG/)
-- [Audio Examples](https://github.com/Tanichu-Laboratory/MH-MuG/tree/main/audio_examples)
-
 ## Known Limitations
 
 1. **Dataset Size**: Limited to 100 pieces per genre (proof-of-concept)
